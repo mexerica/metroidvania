@@ -1,0 +1,749 @@
+ctjsVersion: 1.7.0
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  mouse: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - name: Player
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 2
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i9c82b3aa-e489-4b56-ade4-b0a4923f1e65.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 9c82b3aa-e489-4b56-ade4-b0a4923f1e65
+    padding: 1
+    lastmod: 1637006566576
+    stripPoints:
+      - x: 0
+        'y': -32
+      - x: 30
+        'y': -10
+      - x: 19
+        'y': 26
+      - x: -19
+        'y': 26
+      - x: -30
+        'y': -10
+    closedStrip: true
+  - name: Floor1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i58a1b9d3-5c0f-4712-9b69-b22d50c42ab3.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 58a1b9d3-5c0f-4712-9b69-b22d50c42ab3
+    padding: 1
+    lastmod: 1637006042920
+  - name: spike
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i713ec37c-06f1-4f6f-bbfb-4145186a1cb4.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 713ec37c-06f1-4f6f-bbfb-4145186a1cb4
+    padding: 1
+  - name: Item
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: ic589eb21-544b-4be0-a49f-e532bb2ee6f0.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: c589eb21-544b-4be0-a49f-e532bb2ee6f0
+    padding: 1
+    lastmod: 1637008538643
+  - name: Door
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: ib7e1d0f8-3d6e-4727-b2a5-58dbcca8cace.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: b7e1d0f8-3d6e-4727-b2a5-58dbcca8cace
+    padding: 1
+    lastmod: 1637009726174
+  - name: Enemy
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i69638ef9-df25-4062-b962-5d4ba848b6c1.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 69638ef9-df25-4062-b962-5d4ba848b6c1
+    padding: 1
+  - name: Attack
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i51bd6633-a481-4a4c-83a0-59045c77658a.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 51bd6633-a481-4a4c-83a0-59045c77658a
+    padding: 1
+  - name: AnotherPlayer
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i66a40b92-4ca1-4c36-9871-42905d4a3f16.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 66a40b92-4ca1-4c36-9871-42905d4a3f16
+    padding: 1
+skeletons: []
+types:
+  - name: Floor1
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 58a1b9d3-5c0f-4712-9b69-b22d50c42ab3
+    extends:
+      ctype: Solid
+    uid: dc757195-ff28-4992-973c-49bc0921107c
+    lastmod: 1637006057177
+  - name: Player
+    depth: 0
+    oncreate: |-
+      this.ctype = "Hero";
+
+      this.jumpSpeed = -9;
+      this.gravity = 0.5;
+      this.life = 2;
+      this.tex = "Player";
+
+      this.hspeed = 0; 
+      this.vspeed = 0; 
+
+      this.savedX = this.x;
+      this.savedY = this.y;
+
+      this.run = false;
+
+      ct.camera.follow = this;
+      ct.camera.borderX = 450;
+      ct.camera.borderY = 200;
+    onstep: |-
+      this.movespeed = 4 * ct.delta; 
+
+      if (ct.actions.MoveLeft.down) {
+          this.hspeed = -this.movespeed;
+          this.tex = "AnotherPlayer";
+      } else if (ct.actions.MoveRight.down) {
+          this.hspeed = this.movespeed;
+          this.tex = "Player";
+      } else {
+          this.hspeed = 0;
+      }
+
+      if (ct.actions.Run.down && this.hspeed != 0){
+          this.hspeed = this.hspeed * 2;
+      }
+
+      if (ct.place.occupied(this, this.x, this.y + 1, 'Solid')) {
+          if (ct.actions.Jump.down) {
+              this.vspeed = this.jumpSpeed;
+          } else {
+              this.vspeed = 0;
+          }
+      } else {
+          this.vspeed += this.gravity * ct.delta;
+      }
+
+      for (var i = 0; i < Math.abs(this.hspeed); i++) {
+          if (ct.place.free(this, this.x + Math.sign(this.hspeed), this.y, 'Solid')) {
+              this.x += Math.sign(this.hspeed);
+          } else {
+              break;
+          }
+      }
+
+      for (var i = 0; i < Math.abs(this.vspeed); i++) {
+          if (ct.place.free(this, this.x, this.y + Math.sign(this.vspeed), 'Solid')) {
+              this.y += Math.sign(this.vspeed);
+          } else {
+              break;
+          }
+      }
+
+      if (ct.place.occupied(this, this.x, this.y, 'Deadly')) {
+          this.x = this.savedX;
+          this.y = this.savedY;
+          this.hspeed = 0;
+          this.vspeed = 0;
+          return;
+      }
+
+      if (ct.place.meet(this, this.x, this.y, "Door")) {
+         ct.rooms.switch(ct.room.nextRoom);
+      }
+
+      if (ct.actions.Attack.pressed) {
+          if (this.tex == "Player"){
+              ct.types.copy('Attack', this.x + 70, this.y);
+          } else {
+              ct.types.copy('Attack', this.x - 70, this.y);
+          }
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 9c82b3aa-e489-4b56-ade4-b0a4923f1e65
+    extends: {}
+    uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
+    lastmod: 1637014164230
+  - name: spike
+    depth: 0
+    oncreate: |-
+      this.ctype = "Deadly";
+      this.visible = true;
+    onstep: |-
+      /*
+      if (ct.place.occupied(this, this.x, this.y, 'Hero')) {
+          this.visible = false;
+          this.ctype = "NotDeadly";
+      }
+      */
+    ondraw: ''
+    ondestroy: ''
+    texture: 713ec37c-06f1-4f6f-bbfb-4145186a1cb4
+    extends: {}
+    uid: d6ca2d0e-0c95-4db8-be23-9120a2fd8cb3
+    lastmod: 1637010167487
+  - name: Door
+    depth: 0
+    oncreate: this.ctype = "Door";
+    onstep: ''
+    ondraw: ''
+    ondestroy: ''
+    texture: b7e1d0f8-3d6e-4727-b2a5-58dbcca8cace
+    extends: {}
+    uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
+    lastmod: 1637010162842
+  - name: Enemy
+    depth: 0
+    oncreate: this.ctype = "Deadly";
+    onstep: |-
+      var collided = ct.place.meet(this, this.x, this.y, 'Attack');
+      if (collided) {
+          collided.kill = true;
+          this.kill = true;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
+    extends: {}
+    uid: ee547c8d-5467-4512-82cc-2c1b4475e02d
+    lastmod: 1637014206135
+  - name: Attack
+    depth: 0
+    oncreate: |-
+      this.ctype = "Attack";
+      this.direction = 90;
+      this.timer = 0;
+    onstep: |-
+      if (this.timer > 10) {
+          this.kill = true;
+      }
+      this.timer += 1;
+    ondraw: ''
+    ondestroy: ''
+    texture: 51bd6633-a481-4a4c-83a0-59045c77658a
+    extends: {}
+    uid: ce0183ba-e3fb-40ba-ad0b-06e76c2a8146
+    lastmod: 1637013622345
+sounds: []
+styles: []
+rooms:
+  - name: Room_fddc9c786943
+    oncreate: this.nextRoom = 'Room_a40914dbcbc9';
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies:
+      - x: 64
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 128
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 256
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 320
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 128
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 64
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 64
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 0
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 128
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 128
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 64
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 64
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 0
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 256
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 384
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 320
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 448
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 384
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 320
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 256
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 128
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -64
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 384
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 320
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 256
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 128
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 64
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 0
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -192
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -128
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -64
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 128
+        'y': 128
+        uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
+        exts: {}
+      - x: 0
+        'y': 640
+        uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 22aa4ef0-1ae0-42b1-aab3-fddc9c786943
+    thumbnail: fddc9c786943
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1637012671257
+  - name: Room_a40914dbcbc9
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies:
+      - x: 0
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 128
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 256
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 384
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 320
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 448
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 576
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 640
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 768
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 704
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -64
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 768
+        'y': 384
+        uid: d6ca2d0e-0c95-4db8-be23-9120a2fd8cb3
+        exts: {}
+      - x: -64
+        'y': 384
+        uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
+        exts: {}
+      - x: 640
+        'y': 384
+        uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
+        exts: {}
+      - x: 128
+        'y': 384
+        uid: ee547c8d-5467-4512-82cc-2c1b4475e02d
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: b0df7451-0d13-44a7-90a3-a40914dbcbc9
+    thumbnail: a40914dbcbc9
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1637013856535
+actions:
+  - name: MoveRight
+    methods:
+      - code: keyboard.KeyD
+  - name: MoveLeft
+    methods:
+      - code: keyboard.KeyA
+  - name: Jump
+    methods:
+      - code: keyboard.KeyJ
+  - name: Run
+    methods:
+      - code: keyboard.KeyL
+  - name: Attack
+    methods:
+      - code: keyboard.KeyK
+emitterTandems: []
+scripts: []
+starting: 0
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: ''
+    version:
+      - 0
+      - 0
+      - 1
+    versionPostfix: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    icon: -1
+    accent: '#446adb'
+    invertPreloaderScheme: true
+  fps: 30
+fonts: []
+palette: []
+startroom: 22aa4ef0-1ae0-42b1-aab3-fddc9c786943
