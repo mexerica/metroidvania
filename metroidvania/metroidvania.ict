@@ -97,7 +97,7 @@ textures:
     bottom: 64
     uid: 713ec37c-06f1-4f6f-bbfb-4145186a1cb4
     padding: 1
-  - name: Item
+  - name: item
     untill: 0
     grid:
       - 1
@@ -121,7 +121,7 @@ textures:
     bottom: 64
     uid: c589eb21-544b-4be0-a49f-e532bb2ee6f0
     padding: 1
-    lastmod: 1637008538643
+    lastmod: 1637104309287
   - name: Door
     untill: 0
     grid:
@@ -219,6 +219,31 @@ textures:
     bottom: 64
     uid: 66a40b92-4ca1-4c36-9871-42905d4a3f16
     padding: 1
+  - name: Button
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 16
+    imgHeight: 16
+    width: 16
+    height: 16
+    offx: 0
+    offy: 0
+    origname: i85bc512e-02c2-4106-9125-99e1f70aa4ec.png
+    shape: rect
+    left: 0
+    right: 16
+    top: 0
+    bottom: 16
+    uid: 85bc512e-02c2-4106-9125-99e1f70aa4ec
+    padding: 1
+    lastmod: 1637101035281
 skeletons: []
 types:
   - name: Floor1
@@ -249,10 +274,14 @@ types:
       this.savedY = this.y;
 
       this.run = false;
+      this.anotherweapon = false;
+      this.more = false;
 
       ct.camera.follow = this;
       ct.camera.borderX = 450;
       ct.camera.borderY = 200;
+
+      this.action = "Attack";
     onstep: |-
       this.movespeed = 4 * ct.delta; 
 
@@ -308,11 +337,23 @@ types:
          ct.rooms.switch(ct.room.nextRoom);
       }
 
+      if (ct.place.occupied(this, this.x, this.y, "Blade")){
+          this.more = true;
+      }
+
+      if (ct.actions.Change.pressed && this.more == true){
+          if (this.action == "Attack") {
+              this.action = "AttackMini";
+          } else {
+              this.action = "Attack";
+          }
+      }
+
       if (ct.actions.Attack.pressed) {
           if (this.tex == "Player"){
-              ct.types.copy('Attack', this.x + 70, this.y);
+              ct.types.copy(this.action, this.x + 70, this.y);
           } else {
-              ct.types.copy('Attack', this.x - 70, this.y);
+              ct.types.copy(this.action, this.x - 70, this.y);
           }
       }
     ondraw: ''
@@ -320,7 +361,7 @@ types:
     texture: 9c82b3aa-e489-4b56-ade4-b0a4923f1e65
     extends: {}
     uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
-    lastmod: 1637014164230
+    lastmod: 1637105210824
   - name: spike
     depth: 0
     oncreate: |-
@@ -346,9 +387,10 @@ types:
     ondraw: ''
     ondestroy: ''
     texture: b7e1d0f8-3d6e-4727-b2a5-58dbcca8cace
-    extends: {}
+    extends:
+      ctype: Solid
     uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
-    lastmod: 1637010162842
+    lastmod: 1637104079067
   - name: Enemy
     depth: 0
     oncreate: this.ctype = "Deadly";
@@ -363,7 +405,7 @@ types:
     texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
     extends: {}
     uid: ee547c8d-5467-4512-82cc-2c1b4475e02d
-    lastmod: 1637014206135
+    lastmod: 1637097118023
   - name: Attack
     depth: 0
     oncreate: |-
@@ -380,13 +422,89 @@ types:
     texture: 51bd6633-a481-4a4c-83a0-59045c77658a
     extends: {}
     uid: ce0183ba-e3fb-40ba-ad0b-06e76c2a8146
-    lastmod: 1637013622345
+    lastmod: 1637105369650
+  - name: blade
+    depth: 0
+    oncreate: this.ctype = "Blade";
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: c589eb21-544b-4be0-a49f-e532bb2ee6f0
+    extends: {}
+    uid: e6ede67f-3ec8-447c-8a50-c93349c6be69
+    lastmod: 1637104430711
+  - name: Button
+    depth: 0
+    oncreate: this.y = 64;
+    onstep: |-
+      if (ct.actions.Up.down){
+          if (this.y > 184){
+              this.y += 40;
+          } 
+      }    
+
+      if (ct.actions.Down.down){
+          if (this.y < 63){
+          this.y == 184;
+          } 
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 85bc512e-02c2-4106-9125-99e1f70aa4ec
+    extends: {}
+    uid: 86f96971-10a4-49b8-9a15-e2a2cd5abc44
+    lastmod: 1637102353581
+  - name: AttackMini
+    depth: 0
+    oncreate: |
+      this.ctype = "AttackMini";
+      this.direction = 90;
+      this.timer = 0;
+    onstep: |-
+      if (this.timer > 10) {
+          this.kill = true;
+      }
+      this.timer += 1;
+    ondraw: ''
+    ondestroy: ''
+    texture: 85bc512e-02c2-4106-9125-99e1f70aa4ec
+    extends: {}
+    uid: dd4a257d-a0ee-4260-926f-80e78fabdad0
+    lastmod: 1637105388869
 sounds: []
-styles: []
+styles:
+  - name: Menu
+    uid: e00fdd6a-1b44-41a9-bcdb-defee80a79fa
+    origname: sdefee80a79fa
+    font:
+      family: sans-serif
+      size: 12
+      weight: 400
+      italic: false
+      wrap: false
+    lastmod: 1637097705088
+    fill:
+      type: '0'
+  - name: Menured
+    uid: 33494552-ab4c-4fdc-8bfd-5b94b913430d
+    origname: s5b94b913430d
+    font:
+      family: sans-serif
+      size: 12
+      weight: 400
+      italic: false
+      wrap: false
+    lastmod: 1637098717362
+    fill:
+      type: '0'
+      color: '#FF0000'
 rooms:
   - name: Room_fddc9c786943
     oncreate: this.nextRoom = 'Room_a40914dbcbc9';
-    onstep: ''
+    onstep: |-
+      if (ct.actions.Quit.down){
+          ct.rooms.switch("Room_Menu");
+      }
     ondraw: ''
     onleave: ''
     width: 800
@@ -606,9 +724,9 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637012671257
+    lastmod: 1637104135623
   - name: Room_a40914dbcbc9
-    oncreate: ''
+    oncreate: this.nextRoom = 'Room_93ed43329b92';
     onstep: ''
     ondraw: ''
     onleave: ''
@@ -676,10 +794,6 @@ rooms:
         'y': 384
         uid: d6ca2d0e-0c95-4db8-be23-9120a2fd8cb3
         exts: {}
-      - x: -64
-        'y': 384
-        uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
-        exts: {}
       - x: 640
         'y': 384
         uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
@@ -687,6 +801,10 @@ rooms:
       - x: 128
         'y': 384
         uid: ee547c8d-5467-4512-82cc-2c1b4475e02d
+        exts: {}
+      - x: -64
+        'y': 384
+        uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
         exts: {}
     tiles:
       - depth: -10
@@ -697,7 +815,386 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637013856535
+    lastmod: 1637104129832
+  - name: Room_Menu
+    oncreate: >-
+      this.show1 = "J";
+
+      this.show2 = "K";
+
+      this.show3 = "L";
+
+      this.show4 = "ESC";
+
+
+      this.text1 =
+      "safasddfashADDFGCCJJNJNhgdfgdsfgdfgdffgsdfasdfsdfsdfsdfsdfsdfsdfsfsssd";
+
+      this.text2 =
+      "safasddfashADDFGCCJJNJNhgdfgdsfgdfgdffgsdfasdfsdfsdfsdfsdfsdfsdfsfsssd";
+
+      this.text3 =
+      "safasddfashADDFGCCJJNJNhgdfgdsfgdfgdffgsdfasdfsdfsdfsdfsdfsdfsdfsfsssd";
+
+      this.text4 =
+      "safasddfashADDFGCCJJNJNhgdfgdsfgdfgdffgsdfasdfsdfsdfsdfsdfsdfsdfsfsssd";
+
+
+      this.scoreLabel = new PIXI.Text(this.text1, ct.styles.get('Menu'));
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 220;
+
+      this.scoreLabel.y = 64;
+
+      this.scoreLabel.depth = 1000;
+
+
+      this.scoreLabel = new PIXI.Text(this.text2, ct.styles.get('Menu'));;
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 220;
+
+      this.scoreLabel.y = 104;
+
+      this.scoreLabel.depth = 1000;
+
+
+      this.scoreLabel = new PIXI.Text(this.text3, ct.styles.get('Menu'));;
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 220;
+
+      this.scoreLabel.y = 144;
+
+      this.scoreLabel.depth = 1000;
+
+
+      this.scoreLabel = new PIXI.Text(this.text4, ct.styles.get('Menu'));;
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 220;
+
+      this.scoreLabel.y = 184;
+
+      this.scoreLabel.depth = 1000;
+
+
+      this.scoreLabel = new PIXI.Text(this.show1, ct.styles.get('Menured'));
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 200;
+
+      this.scoreLabel.y = 64;
+
+      this.scoreLabel.depth = 1000;
+
+
+      this.scoreLabel = new PIXI.Text(this.show2, ct.styles.get('Menured'));
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 200;
+
+      this.scoreLabel.y = 104;
+
+      this.scoreLabel.depth = 1000;
+
+
+      this.scoreLabel = new PIXI.Text(this.show3, ct.styles.get('Menured'));
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 200;
+
+      this.scoreLabel.y = 144;
+
+      this.scoreLabel.depth = 1000;
+
+
+      this.scoreLabel = new PIXI.Text(this.show4, ct.styles.get('Menured'));
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 190;
+
+      this.scoreLabel.y = 184;
+
+      this.scoreLabel.depth = 1000;
+    onstep: |-
+      if (ct.actions.Run.down){
+          ct.rooms.switch("Items");
+      }
+
+      if (ct.actions.Jump.down){
+          ct.rooms.switch("Equipment");
+      }
+
+      if (ct.actions.Attack.down){
+          ct.rooms.switch("Monsters");
+      }
+
+      if (ct.actions.Quit.down){
+          ct.rooms.switch("Room_fddc9c786943");
+      }
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 60413e9a-d665-45e2-acdf-dc9bd58067be
+    thumbnail: dc9bd58067be
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1637103796423
+  - name: Equipment
+    oncreate: ''
+    onstep: |-
+      if (ct.actions.Quit.down){
+          ct.rooms.switch("Room_Menu");
+      }
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 4561163c-a166-4d05-8cbd-10d7ab74e2b5
+    thumbnail: 10d7ab74e2b5
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1637103817287
+  - name: Items
+    oncreate: ''
+    onstep: |-
+      if (ct.actions.Quit.down){
+          ct.rooms.switch("Room_Menu");
+      }
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 50ebfd32-2270-419b-8201-bd7b5ab69160
+    thumbnail: bd7b5ab69160
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1637103825958
+  - name: Monsters
+    oncreate: ''
+    onstep: |-
+      if (ct.actions.Quit.down){
+          ct.rooms.switch("Room_Menu");
+      }
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 0d7bdf75-ed6f-46ba-be1c-4d81e92d369e
+    thumbnail: 4d81e92d369e
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1637103839867
+  - name: Room_93ed43329b92
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies:
+      - x: 64
+        'y': 384
+        uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
+        exts: {}
+      - x: 0
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 128
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 256
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 320
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 384
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 448
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 576
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 640
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -64
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -128
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -192
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -320
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 384
+        uid: e6ede67f-3ec8-447c-8a50-c93349c6be69
+        exts: {}
+      - x: -320
+        'y': 384
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -320
+        'y': 320
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -320
+        'y': 256
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -320
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -320
+        'y': 128
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 704
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 704
+        'y': 256
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 704
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 704
+        'y': 128
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 704
+        'y': 384
+        uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
+        exts: {}
+      - x: 704
+        'y': 320
+        uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
+        exts: {}
+      - x: 768
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 832
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 896
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 960
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 960
+        'y': 384
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 960
+        'y': 320
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 960
+        'y': 256
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 960
+        'y': 192
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 960
+        'y': 128
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: ccec461e-ca13-4db4-aca2-93ed43329b92
+    thumbnail: 93ed43329b92
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1637104783755
 actions:
   - name: MoveRight
     methods:
@@ -714,6 +1211,18 @@ actions:
   - name: Attack
     methods:
       - code: keyboard.KeyK
+  - name: Up
+    methods:
+      - code: keyboard.KeyW
+  - name: Down
+    methods:
+      - code: keyboard.KeyS
+  - name: Quit
+    methods:
+      - code: keyboard.Escape
+  - name: Change
+    methods:
+      - code: keyboard.KeyH
 emitterTandems: []
 scripts: []
 starting: 0
@@ -747,3 +1256,4 @@ settings:
 fonts: []
 palette: []
 startroom: 22aa4ef0-1ae0-42b1-aab3-fddc9c786943
+styletick: .nan
