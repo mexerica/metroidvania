@@ -268,6 +268,30 @@ textures:
     bottom: 32
     uid: 2ecbbdcb-ce26-4cf3-aa70-28697ae1fda5
     padding: 1
+  - name: Catch
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: if228078e-4095-4a77-b5e8-c00726e82f4d.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: f228078e-4095-4a77-b5e8-c00726e82f4d
+    padding: 1
 skeletons: []
 types:
   - name: Floor1
@@ -389,6 +413,8 @@ types:
       if (ct.actions.Change.pressed && this.more == true){
           if (this.action == "Attack") {
               this.action = "AttackMini";
+          } else if (this.action == "AttackMini") {
+              this.action = "Catch";
           } else {
               this.action = "Attack";
           }
@@ -411,7 +437,7 @@ types:
     texture: 9c82b3aa-e489-4b56-ade4-b0a4923f1e65
     extends: {}
     uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
-    lastmod: 1637275385331
+    lastmod: 1637278014894
   - name: spike
     depth: 0
     oncreate: |-
@@ -455,7 +481,7 @@ types:
     texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
     extends: {}
     uid: ee547c8d-5467-4512-82cc-2c1b4475e02d
-    lastmod: 1637275864582
+    lastmod: 1637278307743
   - name: Attack
     depth: 0
     oncreate: |-
@@ -562,39 +588,47 @@ types:
       this.ctype = "Deadly";
       this.speed = 3;
       this.direction = 90;
-    onstep: >-
-      var collided = ct.place.meet(this, this.x, this.y, 'Attack');
+      this.catched = false;
+    onstep: |
+      if (this.catched == false){
+          var collided = ct.place.meet(this, this.x, this.y, 'Attack');
+          if (collided) {
+              collided.kill = true;
+              this.kill = true;
+          }
 
-      if (collided) {
-          collided.kill = true;
-          this.kill = true;
-      }
+          var collided = ct.place.meet(this, this.x, this.y, 'Attack');
+          if (collided) {
+              collided.kill = true;
+              this.kill = true;
+          }
 
+          this.move();
+          
+          if (!ct.place.free(this, this.x + Math.sign(this.hspeed), this.y, 'Solid')) {
+              this.direction = 270;
+          }    
 
-      this.move();
+          if (!ct.place.free(this, this.x + Math.sign(this.hspeed), this.y, 'ChangeDirection')) {
+              this.direction = 90;
+          } 
 
+          if (ct.place.free(this, this.x + Math.sign(this.hspeed), this.y, 'Solid')) {
+              this.direction = 270;
+          } 
 
-      if (!ct.place.free(this, this.x + Math.sign(this.hspeed), this.y,
-      'Solid')) {
-          this.direction = 270;
-      } 
-
-
-      if (!ct.place.free(this, this.x + Math.sign(this.hspeed), this.y,
-      'ChangeDirection')) {
-          this.direction = 90;
-      } 
-
-
-      if (this.y > ct.viewHeight + 80) {
-          this.kill = true;
+      } else {
+          this.x += 8 * ct.delta * ct.actions.MoveRight.value;
+          this.x += 8 * ct.delta * -ct.actions.MoveLeft.value;
+          this.y += 8 * ct.delta * ct.actions.Up.value;
+          this.y += 8 * ct.delta * -ct.actions.Down.value;
       }
     ondraw: ''
     ondestroy: ''
     texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
     extends: {}
     uid: 75e0f935-dc69-4423-97c2-edca39ff3dc9
-    lastmod: 1637275757185
+    lastmod: 1637278284168
   - name: Floor2
     depth: 0
     oncreate: this.ctype= "ChangeDirection"
@@ -662,6 +696,23 @@ types:
     extends: {}
     uid: f20d14f8-5cfb-4dd5-9f95-0302223c1496
     lastmod: 1637275893140
+  - name: Catch
+    depth: 0
+    oncreate: |-
+      this.ctype = "Friend";
+      this.direction = 90;
+      this.timer = 0;
+    onstep: |-
+      if (this.timer > 10) {
+          this.kill = true;
+      }
+      this.timer += 1;
+    ondraw: ''
+    ondestroy: ''
+    texture: f228078e-4095-4a77-b5e8-c00726e82f4d
+    extends: {}
+    uid: f107f9d9-8ef6-4087-8e99-5e4a2a6f4fe0
+    lastmod: 1637278019941
 sounds: []
 styles:
   - name: Menu
@@ -1599,6 +1650,10 @@ rooms:
         'y': 512
         uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
         exts: {}
+      - x: 320
+        'y': 320
+        uid: e6ede67f-3ec8-447c-8a50-c93349c6be69
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1608,7 +1663,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637274552691
+    lastmod: 1637277616409
 actions:
   - name: MoveRight
     methods:
@@ -1669,5 +1724,5 @@ settings:
   fps: 30
 fonts: []
 palette: []
-startroom: 22aa4ef0-1ae0-42b1-aab3-fddc9c786943
+startroom: 2fbd5288-1a11-4e20-8b8f-951285441202
 styletick: .nan
