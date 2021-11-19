@@ -268,6 +268,31 @@ textures:
     bottom: 32
     uid: 2ecbbdcb-ce26-4cf3-aa70-28697ae1fda5
     padding: 1
+  - name: arrow
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: id30e6a93-ec6c-4e42-b5d9-88bc02d3a256.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: d30e6a93-ec6c-4e42-b5d9-88bc02d3a256
+    padding: 1
+    lastmod: 1637362694987
 skeletons: []
 types:
   - name: Floor1
@@ -297,6 +322,18 @@ types:
 
       this.savedX = this.x;
       this.savedY = this.y;
+
+      localStorage.wings = false;
+      localStorage.secondjump = false;
+      localStorage.run = false;
+      localStorage.anotherweapon = false;
+      localStorage.more = false;
+
+      this.wings = localStorage.wings;
+      this.secondjump = localStorage.secondjump;
+      this.run = localStorage.run;
+      this.anotherweapon = localStorage.anotherweapon;
+      this.more = localStorage.more;
 
       this.wings = false;
       this.secondjump = false;
@@ -411,7 +448,7 @@ types:
     texture: 9c82b3aa-e489-4b56-ade4-b0a4923f1e65
     extends: {}
     uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
-    lastmod: 1637275385331
+    lastmod: 1637364153449
   - name: spike
     depth: 0
     oncreate: |-
@@ -429,7 +466,7 @@ types:
     texture: 713ec37c-06f1-4f6f-bbfb-4145186a1cb4
     extends: {}
     uid: d6ca2d0e-0c95-4db8-be23-9120a2fd8cb3
-    lastmod: 1637010167487
+    lastmod: 1637362406345
   - name: Door
     depth: 0
     oncreate: this.ctype = "Door";
@@ -441,21 +478,30 @@ types:
       ctype: Solid
     uid: 10b1e208-b95f-44a4-aa65-c25b9595a40f
     lastmod: 1637104079067
-  - name: Enemy
+  - name: Archer
     depth: 0
-    oncreate: this.ctype = "Deadly";
+    oncreate: |-
+      this.ctype = "Deadly";
+      this.timer = 0;
     onstep: |-
       var collided = ct.place.meet(this, this.x, this.y, 'Attack');
       if (collided) {
           collided.kill = true;
           this.kill = true;
       }
+      if (this.timer == 150){
+          ct.types.copy("Arrow", this.x + 70, this.y);
+          this.timer = 100;
+      }
+
+      this.timer += 1;
+      console.log(this.timer);
     ondraw: ''
     ondestroy: ''
     texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
     extends: {}
     uid: ee547c8d-5467-4512-82cc-2c1b4475e02d
-    lastmod: 1637275864582
+    lastmod: 1637363267261
   - name: Attack
     depth: 0
     oncreate: |-
@@ -594,7 +640,7 @@ types:
     texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
     extends: {}
     uid: 75e0f935-dc69-4423-97c2-edca39ff3dc9
-    lastmod: 1637275757185
+    lastmod: 1637364557406
   - name: Floor2
     depth: 0
     oncreate: this.ctype= "ChangeDirection"
@@ -662,6 +708,88 @@ types:
     extends: {}
     uid: f20d14f8-5cfb-4dd5-9f95-0302223c1496
     lastmod: 1637275893140
+  - name: Arrow
+    depth: 0
+    oncreate: |-
+      this.ctype = "Deadly";
+      this.visible = true;
+      this.direction = 360;
+      this.speed = 5;
+    onstep: |-
+      this.move();
+
+      var collided = ct.place.meet(this, this.x, this.y, 'Attack');
+      if (collided) {
+          collided.kill = true;
+          this.kill = true;
+      }
+
+      if (this.x > ct.viewHeight + 80) {
+          this.kill = true;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: d30e6a93-ec6c-4e42-b5d9-88bc02d3a256
+    extends: {}
+    uid: d1760e2c-07f2-4988-89f3-8cf34c20cecf
+    lastmod: 1637364301223
+  - name: Launcher
+    depth: 0
+    oncreate: |-
+      this.ctype = "Deadly";
+      this.timer = 0;
+    onstep: |-
+      var collided = ct.place.meet(this, this.x, this.y, 'Attack');
+      if (collided) {
+          collided.kill = true;
+          this.kill = true;
+      }
+      if (this.timer == 200){
+          ct.types.copy("Rock", this.x, this.y - 140);
+          this.timer = 100;
+      }
+
+      this.timer += 1;
+      console.log(this.timer);
+    ondraw: ''
+    ondestroy: ''
+    texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
+    extends: {}
+    uid: 009357ca-a46e-4001-8b35-6c83e7fd1022
+    lastmod: 1637364734578
+  - name: Rock
+    depth: 0
+    oncreate: |-
+      this.ctype = "Deadly";
+      this.visible = true;
+      this.speed = 5;
+      this.timer = 0;
+    onstep: >-
+      var collided = ct.place.meet(this, this.x, this.y, 'Attack');
+
+      if (collided) {
+          collided.kill = true;
+          this.kill = true;
+      }
+
+
+      if (this.x > ct.viewHeight + 80) {
+          this.kill = true;
+      }
+
+
+      if (ct.place.free(this, this.x + Math.sign(this.hspeed), this.y, 'Solid'))
+      {
+          this.y += 0.8;
+      } 
+
+      this.x -= 0.8;
+    ondraw: ''
+    ondestroy: ''
+    texture: d30e6a93-ec6c-4e42-b5d9-88bc02d3a256
+    extends: {}
+    uid: 27baa7e1-d5de-4931-ae76-198c1aa14daf
+    lastmod: 1637364698910
 sounds: []
 styles:
   - name: Menu
@@ -1236,66 +1364,6 @@ rooms:
     height: 600
     backgrounds: []
     copies:
-      - x: 64
-        'y': 384
-        uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
-        exts: {}
-      - x: 0
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 64
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 128
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 192
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 256
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 320
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 384
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 448
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 512
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 576
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 640
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: -64
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: -128
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: -192
-        'y': 448
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
       - x: -256
         'y': 448
         uid: dc757195-ff28-4992-973c-49bc0921107c
@@ -1303,10 +1371,6 @@ rooms:
       - x: -320
         'y': 448
         uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: -256
-        'y': 384
-        uid: e6ede67f-3ec8-447c-8a50-c93349c6be69
         exts: {}
       - x: -320
         'y': 256
@@ -1408,9 +1472,137 @@ rooms:
         'y': 384
         uid: 11885b86-45e4-4387-b524-04601cdbf835
         exts: {}
+      - x: 128
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 128
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 128
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 64
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 0
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -64
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -128
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -192
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -256
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -192
+        'y': 640
+        uid: 11885b86-45e4-4387-b524-04601cdbf835
+        exts: {}
+      - x: 192
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 576
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 256
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 320
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 384
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
       - x: 448
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 512
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 576
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 640
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -64
+        'y': 704
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 576
         'y': 384
-        uid: ee547c8d-5467-4512-82cc-2c1b4475e02d
+        uid: 009357ca-a46e-4001-8b35-6c83e7fd1022
+        exts: {}
+      - x: 192
+        'y': 384
+        uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
         exts: {}
     tiles:
       - depth: -10
@@ -1421,7 +1613,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637275826154
+    lastmod: 1637364906081
   - name: Room_951285441202
     oncreate: ''
     onstep: ''
@@ -1567,23 +1759,11 @@ rooms:
         'y': 512
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
-      - x: 512
-        'y': 512
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
       - x: 448
         'y': 512
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
       - x: 448
-        'y': 512
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-        exts: {}
-      - x: 576
-        'y': 448
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-        exts: {}
-      - x: 576
         'y': 512
         uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
         exts: {}
@@ -1598,6 +1778,18 @@ rooms:
       - x: 320
         'y': 512
         uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
+        exts: {}
+      - x: 512
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 576
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 576
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
     tiles:
       - depth: -10
@@ -1669,5 +1861,5 @@ settings:
   fps: 30
 fonts: []
 palette: []
-startroom: 22aa4ef0-1ae0-42b1-aab3-fddc9c786943
+startroom: ccec461e-ca13-4db4-aca2-93ed43329b92
 styletick: .nan
