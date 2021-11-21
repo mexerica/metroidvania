@@ -293,6 +293,286 @@ textures:
     uid: d30e6a93-ec6c-4e42-b5d9-88bc02d3a256
     padding: 1
     lastmod: 1637362694987
+  - name: bwfloor
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: if9152112-dacb-4b69-b769-b54e6f1c0c49.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: f9152112-dacb-4b69-b769-b54e6f1c0c49
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0.png'
+  - name: blockfloor
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i2ca2ea04-bd78-4324-b3ad-ca07ea779b72.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 2ca2ea04-bd78-4324-b3ad-ca07ea779b72
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (1).png'
+    lastmod: 1637529495985
+  - name: Spike
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i94462ba3-2de4-4706-8564-05f784adb816.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 94462ba3-2de4-4706-8564-05f784adb816
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (2).png'
+    lastmod: 1637529880681
+  - name: Boliche
+    untill: 0
+    grid:
+      - 4
+      - 1
+    axis:
+      - 14.625
+      - 11.875
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 64
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i5e5185eb-dc1c-434d-8ffe-68c6e238a7e4.png
+    shape: strip
+    left: 0
+    right: 128
+    top: 0
+    bottom: 64
+    uid: 5e5185eb-dc1c-434d-8ffe-68c6e238a7e4
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (3).png'
+    lastmod: 1637536185039
+    stripPoints:
+      - x: 0
+        'y': -16
+      - x: 15
+        'y': -5
+      - x: 9
+        'y': 13
+      - x: -9
+        'y': 13
+      - x: -15
+        'y': -5
+    closedStrip: true
+  - name: pixil-frame-0_(4)
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 34
+      - 27.5
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: ida559540-e4ee-41f2-bcf7-8a4a1a54b7e6.png
+    shape: strip
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: da559540-e4ee-41f2-bcf7-8a4a1a54b7e6
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (4).png'
+    stripPoints:
+      - x: -2.5
+        'y': -26
+      - x: 11
+        'y': -9.5
+      - x: 24
+        'y': -2.5
+      - x: 23
+        'y': 16
+      - x: -17.5
+        'y': 20
+      - x: -9.5
+        'y': 6.5
+      - x: -22
+        'y': -9
+    closedStrip: true
+    lastmod: 1637532395979
+  - name: Arrow
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: if7fe7053-a129-4189-9574-87e36162721c.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: f7fe7053-a129-4189-9574-87e36162721c
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (5).png'
+    lastmod: 1637533228570
+  - name: idk_floor
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i34764fe6-1d7b-4883-8f36-b52644a019d2.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 34764fe6-1d7b-4883-8f36-b52644a019d2
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (6).png'
+    lastmod: 1637534859345
+  - name: Boot
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 38.583333333333336
+      - 21.416666666666668
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: ic5c5369b-64bf-4e8a-8b5d-b23d8df27a36.png
+    shape: rect
+    left: 38
+    right: 26
+    top: 21
+    bottom: 43
+    uid: c5c5369b-64bf-4e8a-8b5d-b23d8df27a36
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (7).png'
+    lastmod: 1637537096930
+    stripPoints:
+      - x: -2.6666666666666665
+        'y': -19.333333333333336
+      - x: 9.666666666666664
+        'y': -16.166666666666668
+      - x: 7.916666666666664
+        'y': 1.9583333333333321
+      - x: 20.5
+        'y': 11.666666666666668
+      - x: 22.791666666666664
+        'y': 20.333333333333332
+      - x: 19
+        'y': 26
+      - x: -15.666666666666666
+        'y': 22.083333333333332
+      - x: -20
+        'y': -10
+      - x: -14.208333333333336
+        'y': -15.541666666666668
+    closedStrip: true
+  - name: pixil-frame-0_(8)
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i37e09fcc-1e44-4219-b8ca-c5373c8dfcfa.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 37e09fcc-1e44-4219-b8ca-c5373c8dfcfa
+    padding: 1
+    source: 'C:\Users\flaud\Downloads\pixil-frame-0 (8).png'
 skeletons: []
 types:
   - name: Floor1
@@ -301,11 +581,11 @@ types:
     onstep: this.move();
     ondraw: ''
     ondestroy: ''
-    texture: 58a1b9d3-5c0f-4712-9b69-b22d50c42ab3
+    texture: f9152112-dacb-4b69-b769-b54e6f1c0c49
     extends:
       ctype: Solid
     uid: dc757195-ff28-4992-973c-49bc0921107c
-    lastmod: 1637275396181
+    lastmod: 1637529020654
   - name: Player
     depth: 0
     oncreate: |-
@@ -448,7 +728,7 @@ types:
     texture: 9c82b3aa-e489-4b56-ade4-b0a4923f1e65
     extends: {}
     uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
-    lastmod: 1637364153449
+    lastmod: 1637508370729
   - name: spike
     depth: 0
     oncreate: |-
@@ -463,10 +743,10 @@ types:
       */
     ondraw: ''
     ondestroy: ''
-    texture: 713ec37c-06f1-4f6f-bbfb-4145186a1cb4
+    texture: 94462ba3-2de4-4706-8564-05f784adb816
     extends: {}
     uid: d6ca2d0e-0c95-4db8-be23-9120a2fd8cb3
-    lastmod: 1637362406345
+    lastmod: 1637529889324
   - name: Door
     depth: 0
     oncreate: this.ctype = "Door";
@@ -586,7 +866,7 @@ types:
     texture: c589eb21-544b-4be0-a49f-e532bb2ee6f0
     extends: {}
     uid: 11885b86-45e4-4387-b524-04601cdbf835
-    lastmod: 1637189656939
+    lastmod: 1637537106210
   - name: Wings
     depth: 0
     oncreate: |-
@@ -640,18 +920,7 @@ types:
     texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
     extends: {}
     uid: 75e0f935-dc69-4423-97c2-edca39ff3dc9
-    lastmod: 1637364557406
-  - name: Floor2
-    depth: 0
-    oncreate: this.ctype= "ChangeDirection"
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 58a1b9d3-5c0f-4712-9b69-b22d50c42ab3
-    extends:
-      ctype: Solid
-    uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-    lastmod: 1637275714645
+    lastmod: 1637536874720
   - name: Fragile
     depth: 0
     oncreate: ''
@@ -664,11 +933,11 @@ types:
       }
     ondraw: ''
     ondestroy: ''
-    texture: 58a1b9d3-5c0f-4712-9b69-b22d50c42ab3
+    texture: f9152112-dacb-4b69-b769-b54e6f1c0c49
     extends:
       ctype: Solid
     uid: ec68c9f7-840b-4dde-84e7-276f69ce395d
-    lastmod: 1637275408346
+    lastmod: 1637529166283
   - name: Enemy_mov
     depth: 0
     oncreate: |-
@@ -717,6 +986,7 @@ types:
       this.speed = 5;
     onstep: |-
       this.move();
+      this.rotation = 360;
 
       var collided = ct.place.meet(this, this.x, this.y, 'Attack');
       if (collided) {
@@ -729,10 +999,10 @@ types:
       }
     ondraw: ''
     ondestroy: ''
-    texture: d30e6a93-ec6c-4e42-b5d9-88bc02d3a256
+    texture: f7fe7053-a129-4189-9574-87e36162721c
     extends: {}
     uid: d1760e2c-07f2-4988-89f3-8cf34c20cecf
-    lastmod: 1637364301223
+    lastmod: 1637533456149
   - name: Launcher
     depth: 0
     oncreate: |-
@@ -746,7 +1016,7 @@ types:
       }
       if (this.timer == 200){
           ct.types.copy("Rock", this.x, this.y - 140);
-          this.timer = 100;
+          this.timer = 0;
       }
 
       this.timer += 1;
@@ -756,7 +1026,7 @@ types:
     texture: 69638ef9-df25-4062-b962-5d4ba848b6c1
     extends: {}
     uid: 009357ca-a46e-4001-8b35-6c83e7fd1022
-    lastmod: 1637364734578
+    lastmod: 1637530016746
   - name: Rock
     depth: 0
     oncreate: |-
@@ -764,6 +1034,7 @@ types:
       this.visible = true;
       this.speed = 5;
       this.timer = 0;
+      this.animationSpeed = 0.1;
     onstep: >-
       var collided = ct.place.meet(this, this.x, this.y, 'Attack');
 
@@ -773,9 +1044,10 @@ types:
       }
 
 
-      if (this.x > ct.viewHeight + 80) {
+      if (!ct.place.free(this, this.x + Math.sign(this.hspeed), this.y,
+      'ChangeDirection')) {
           this.kill = true;
-      }
+      } 
 
 
       if (ct.place.free(this, this.x + Math.sign(this.hspeed), this.y, 'Solid'))
@@ -784,12 +1056,28 @@ types:
       } 
 
       this.x -= 0.8;
+
+
+      this.play();
     ondraw: ''
     ondestroy: ''
-    texture: d30e6a93-ec6c-4e42-b5d9-88bc02d3a256
+    texture: 5e5185eb-dc1c-434d-8ffe-68c6e238a7e4
     extends: {}
     uid: 27baa7e1-d5de-4931-ae76-198c1aa14daf
-    lastmod: 1637364698910
+    lastmod: 1637536978084
+  - name: Floor
+    depth: 0
+    oncreate: |-
+      this.ctype= "ChangeDirection"
+      this.visible = false;
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 58a1b9d3-5c0f-4712-9b69-b22d50c42ab3
+    extends:
+      ctype: Solid
+    uid: b217d5cb-4e83-44fa-b9c8-c63b1b960829
+    lastmod: 1637536426276
 sounds: []
 styles:
   - name: Menu
@@ -1040,10 +1328,6 @@ rooms:
         exts: {}
       - x: -64
         'y': 448
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-        exts: {}
-      - x: -64
-        'y': 448
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
     tiles:
@@ -1055,7 +1339,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637273187214
+    lastmod: 1637529138471
   - name: Room_a40914dbcbc9
     oncreate: this.nextRoom = 'Room_93ed43329b92';
     onstep: ''
@@ -1146,7 +1430,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637273293901
+    lastmod: 1637529152784
   - name: Room_Menu
     oncreate: >-
       this.show1 = "J";
@@ -1468,10 +1752,6 @@ rooms:
         'y': 320
         uid: ec68c9f7-840b-4dde-84e7-276f69ce395d
         exts: {}
-      - x: -448
-        'y': 384
-        uid: 11885b86-45e4-4387-b524-04601cdbf835
-        exts: {}
       - x: 128
         'y': 512
         uid: dc757195-ff28-4992-973c-49bc0921107c
@@ -1530,10 +1810,6 @@ rooms:
         exts: {}
       - x: -256
         'y': 704
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: -256
-        'y': 640
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
       - x: -256
@@ -1604,6 +1880,18 @@ rooms:
         'y': 384
         uid: 3c671d76-6dc4-4db0-8785-94e13d4d51f1
         exts: {}
+      - x: -256
+        'y': 640
+        uid: b217d5cb-4e83-44fa-b9c8-c63b1b960829
+        exts: {}
+      - x: -256
+        'y': 640
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: -448
+        'y': 384
+        uid: e6ede67f-3ec8-447c-8a50-c93349c6be69
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1613,7 +1901,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637364906081
+    lastmod: 1637529154811
   - name: Room_951285441202
     oncreate: ''
     onstep: ''
@@ -1651,19 +1939,11 @@ rooms:
         'y': 384
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
-      - x: 192
-        'y': 384
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
       - x: 320
         'y': 384
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
       - x: 576
-        'y': 384
-        uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 256
         'y': 384
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
@@ -1751,10 +2031,6 @@ rooms:
         'y': 256
         uid: 75e0f935-dc69-4423-97c2-edca39ff3dc9
         exts: {}
-      - x: 192
-        'y': 384
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-        exts: {}
       - x: 384
         'y': 512
         uid: dc757195-ff28-4992-973c-49bc0921107c
@@ -1762,22 +2038,6 @@ rooms:
       - x: 448
         'y': 512
         uid: dc757195-ff28-4992-973c-49bc0921107c
-        exts: {}
-      - x: 448
-        'y': 512
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-        exts: {}
-      - x: 384
-        'y': 512
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-        exts: {}
-      - x: 320
-        'y': 448
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
-        exts: {}
-      - x: 320
-        'y': 512
-        uid: 23ff6e9c-2d34-4cea-85f9-0f070ebba73b
         exts: {}
       - x: 512
         'y': 512
@@ -1791,6 +2051,26 @@ rooms:
         'y': 448
         uid: dc757195-ff28-4992-973c-49bc0921107c
         exts: {}
+      - x: 256
+        'y': 384
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 320
+        'y': 448
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 320
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 384
+        'y': 512
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
+      - x: 192
+        'y': 384
+        uid: dc757195-ff28-4992-973c-49bc0921107c
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1800,7 +2080,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1637274552691
+    lastmod: 1637529133810
 actions:
   - name: MoveRight
     methods:
@@ -1861,5 +2141,5 @@ settings:
   fps: 30
 fonts: []
 palette: []
-startroom: ccec461e-ca13-4db4-aca2-93ed43329b92
+startroom: 22aa4ef0-1ae0-42b1-aab3-fddc9c786943
 styletick: .nan
